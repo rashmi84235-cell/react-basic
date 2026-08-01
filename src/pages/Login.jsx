@@ -1,6 +1,19 @@
 import { useState } from "react";
+import axios from "axios";
 
 function Login() {
+  const [username, setUsername]=useState("");
+  const [password, setPassword]=useState("");
+  function loginSubmit(e){
+ e.preventDefault();
+ 
+
+const customConfig = { headers: { 'Content-Type': 'application/json' } };
+  const credentials = { username: username, password: password };
+axios.post('https://fakestoreapi.com/auth/login', credentials,customConfig)
+  .then(response => alert("login successfully"))
+  .catch(x=>alert("login failed"));
+  }
 
   const [open, setOpen] = useState(false);
 
@@ -55,6 +68,26 @@ function Login() {
       </div>
 
 
+<form className="login-form" onSubmit={loginSubmit}>
+
+  <input 
+    className="input-box"
+    placeholder="Enter login id"
+    onChange={(e)=>setUsername(e.target.value)}
+  />
+
+  <input 
+    className="input-box"
+    type="password"
+    placeholder="Enter password"
+    onChange={(e)=>setPassword(e.target.value)}
+  />
+
+  <button className="login-btn" type="submit">
+    Login
+  </button>
+
+</form>
     </div>
   );
 }

@@ -13,7 +13,7 @@ function Sidebar() {
       <h2 className="logo">Fake Store API</h2>
 
 
-      {/* Main Sections */}
+      
       <Link to="/carts/get-all" className="section-link">
         🛒 Carts
       </Link>
@@ -21,14 +21,16 @@ function Sidebar() {
       <Link to="/users/get-all" className="section-link">
         👤 Users
       </Link>
-
-      <Link to="/auth/login" className="section-link">
-        🔒 Auth
+<Link to="/users/list" className="section-link">
+        👤 Users
       </Link>
+      <Link to="/auth" className="section-link">
+  🔒 Auth
+</Link>
 
 
 
-      {/* Carts Section */}
+    
       {!isUserPage && !isAuthPage && (
         <>
           <h3>🛒 Carts</h3>
@@ -62,7 +64,7 @@ function Sidebar() {
 
 
 
-      {/* Users Section */}
+      
       {isUserPage && (
         <>
           <h3>👤 Users</h3>
@@ -96,16 +98,16 @@ function Sidebar() {
 
 
 
-      {/* Auth Section */}
+     
       {isAuthPage && (
         <>
-          <h3>🔒 Auth</h3>
-
+         
           <Link to="/auth/login">
             <span className="method post">POST</span>
             Login
           </Link>
-        </>
+          
+                  </>
       )}
 
 

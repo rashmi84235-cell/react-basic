@@ -1,6 +1,36 @@
 import { useState } from "react";
-
+import axios from "axios";
 function AddNewUser() {
+ const [email, setEmail] = useState("");
+const [username, setUsername] = useState("");
+const [password, setPassword] = useState("");
+const [firstname, setFirstname] = useState("");
+const [lastname, setLastname] = useState("");
+  function signupSubmit(e) {
+   
+  e.preventDefault();
+
+  const userData = {
+    email,
+    username,
+    password,
+    name: {
+      firstname,
+      lastname,
+    },
+  };
+
+  axios
+    .post("https://fakestoreapi.com/users", userData)
+    .then((response) => {
+      alert("User created successfully");
+      console.log(response.data);
+    })
+    .catch((error) => {
+      alert("Signup failed");
+      console.log(error);
+    });
+}
 
   const [open, setOpen] = useState(false);
 
@@ -64,7 +94,39 @@ function AddNewUser() {
       <div className="response error">
         <h3>400 Bad request</h3>
       </div>
+<form onSubmit={signupSubmit}>
+  <input
+  className="input-box"
+  type="text"
+  placeholder="Enter last name"
+  onChange={(e) => setLastname(e.target.value)}
+/>
 
+<input
+  className="input-box"
+  type="email"
+  placeholder="Enter email"
+  onChange={(e) => setEmail(e.target.value)}
+/>
+
+<input
+  className="input-box"
+  type="text"
+  placeholder="Enter username"
+  onChange={(e) => setUsername(e.target.value)}
+/>
+
+<input
+  className="input-box"
+  type="password"
+  placeholder="Enter password"
+  onChange={(e) => setPassword(e.target.value)}
+/>
+
+  <button className="login-btn" type="submit">
+  Sign Up
+</button>
+</form>
 
     </div>
   );

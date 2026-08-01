@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { Router, Routes, Route, HashRouter } from "react-router-dom";
 import Sidebar from "./components/Sidebar";
 
 
@@ -14,11 +14,12 @@ import AddNewUser from "./pages/AddNewUser";
 import UpdateUser from "./pages/UpdateUser";
 import DeleteUser from "./pages/DeleteUser";
 import Login from "./pages/Login";
+import UserList from "./pages/UserList";
 import "./App.css";
 
 function App() {
   return (
-    <BrowserRouter>
+    <HashRouter>
       <div className="container">
   <Sidebar />
 
@@ -37,11 +38,12 @@ function App() {
       <Route path="/users/update" element={<UpdateUser />} />
       <Route path="/users/delete" element={<DeleteUser />} />
       <Route path="/auth/login" element={<Login />} />
-      
+      <Route path="/users/list" element={<UserList />} />
+       <Route path="*" element={<Carts />} />
     </Routes>
   </main>
 </div>
-    </BrowserRouter>
+    </HashRouter>
   );
 }
     
